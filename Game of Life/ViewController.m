@@ -100,21 +100,6 @@
     [self updateCellViews];
 }
 
--(IBAction)switchAction:(id)sender{
-    UISwitch *switchButton = (UISwitch*)sender;
-    BOOL isButtonOn = [switchButton isOn];
-    if (isButtonOn) {
-        _timer = [NSTimer scheduledTimerWithTimeInterval:_speed
-                                                          target:self
-                                                        selector:@selector(next)
-                                                        userInfo:nil
-                                                         repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
-    }else {
-        [_timer invalidate];
-    }
-}
-
 -(IBAction)handleSegmentedControl:(id)sender{
     UISegmentedControl *seg = (UISegmentedControl*)sender;
     NSInteger Index = seg.selectedSegmentIndex;
