@@ -26,9 +26,7 @@
     [self addNextButton];
     [self addRandomButton];
     [self addClearButton];
-//    [self addSwitchButton];
     [self addSegmentedControl];
-    _speed = 0.5f;
 }
 
 -(void)addNextButton{
@@ -54,13 +52,6 @@
     [clearButton addTarget:self action:@selector(handleClearButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:clearButton];
 }
-
-//-(void)addSwitchButton{
-//    UISwitch *switchButton = [[UISwitch alloc] initWithFrame:CGRectMake(120, 444, 80, 30)];
-//    [switchButton setOn:NO];
-//    [switchButton addTarget:self action:@selector(switchAction:) forControlEvents:UIControlEventValueChanged];
-//    [self.view addSubview:switchButton];
-//}
 
 -(void)addSegmentedControl{
     NSArray *segmentedArray = [[NSArray alloc]initWithObjects:@"Stop",@"Slow",@"Med",@"Fast",nil];

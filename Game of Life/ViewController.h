@@ -13,7 +13,6 @@
 @interface ViewController : UIViewController
 
 @property (nonatomic, strong) StatesArray *statesArray;
-@property (nonatomic) float speed;
 @property (nonatomic, strong) NSTimer *timer;
 
 -(void)setState:(int)state row:(int)row col:(int)col;
