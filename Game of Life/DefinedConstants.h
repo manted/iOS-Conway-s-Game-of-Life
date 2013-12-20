@@ -16,7 +16,7 @@
 #define ALIVE 0
 #define DEAD 1
 
-#define CELL_WIDTH 10
+#define CELL_WIDTH 20
 #define AREA_WIDTH 320
 #define AREA_HEIGHT (IS_WIDESCREEN?488:400)
 #define NUM_OF_ROW AREA_HEIGHT / CELL_WIDTH
