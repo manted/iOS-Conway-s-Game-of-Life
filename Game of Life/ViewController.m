@@ -27,11 +27,13 @@
     [self addRandomButton];
     [self addClearButton];
     [self addSegmentedControl];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
 
 -(void)addNextButton{
     UIButton *nextButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    nextButton.frame = CGRectMake(10, 404, 60, 30);
+    nextButton.frame = CGRectMake(10, AREA_HEIGHT + 4, 60, 30);
     [nextButton setTitle:@"Next" forState:UIControlStateNormal];
     [nextButton addTarget:self action:@selector(handleNextButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:nextButton];
@@ -39,7 +41,7 @@
 
 -(void)addRandomButton{
     UIButton *randomButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    randomButton.frame = CGRectMake(10, 444, 80, 30);
+    randomButton.frame = CGRectMake(50, AREA_HEIGHT + 44, 100, 30);
     [randomButton setTitle:@"Random" forState:UIControlStateNormal];
     [randomButton addTarget:self action:@selector(handleRandomButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:randomButton];
@@ -47,7 +49,7 @@
 
 -(void)addClearButton{
     UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    clearButton.frame = CGRectMake(100, 444, 100, 30);
+    clearButton.frame = CGRectMake(170, AREA_HEIGHT + 44, 100, 30);
     [clearButton setTitle:@"Clear" forState:UIControlStateNormal];
     [clearButton addTarget:self action:@selector(handleClearButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:clearButton];
@@ -56,7 +58,7 @@
 -(void)addSegmentedControl{
     NSArray *segmentedArray = [[NSArray alloc]initWithObjects:@"Stop",@"Slow",@"Med",@"Fast",nil];
     UISegmentedControl *segmentedControl = [[UISegmentedControl alloc]initWithItems:segmentedArray];
-    segmentedControl.frame = CGRectMake(80, 404, 230, 30);
+    segmentedControl.frame = CGRectMake(80, AREA_HEIGHT + 4, 230, 30);
     segmentedControl.selectedSegmentIndex = 0;
     [segmentedControl addTarget:self action:@selector(handleSegmentedControl:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:segmentedControl];
@@ -104,40 +106,37 @@
     UISegmentedControl *seg = (UISegmentedControl*)sender;
     NSInteger Index = seg.selectedSegmentIndex;
     
+    float speed = 1.0f;
+    BOOL isStopped = YES;
     switch (Index) {
         case 0:
-            [_timer invalidate];
+            isStopped = YES;
             break;
         case 1:
-            [_timer invalidate];
-            _timer = [NSTimer scheduledTimerWithTimeInterval:1
-                                                      target:self
-                                                    selector:@selector(next)
-                                                    userInfo:nil
-                                                     repeats:YES];
-            [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+            speed = 1;
+            isStopped = NO;
             break;
         case 2:
-            [_timer invalidate];
-            _timer = [NSTimer scheduledTimerWithTimeInterval:0.5
-                                                      target:self
-                                                    selector:@selector(next)
-                                                    userInfo:nil
-                                                     repeats:YES];
-            [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+            speed = 0.5f;
+            isStopped = NO;
             break;
         case 3:
-            [_timer invalidate];
-            _timer = [NSTimer scheduledTimerWithTimeInterval:0.1
-                                                      target:self
-                                                    selector:@selector(next)
-                                                    userInfo:nil
-                                                     repeats:YES];
-            [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+            speed = 0.1f;
+            isStopped = NO;
             break;
         default:
             break;
     }
+    [_timer invalidate];
+    if (isStopped == NO) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:speed
+                                                  target:self
+                                                selector:@selector(next)
+                                                userInfo:nil
+                                                 repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:_timer forMode:NSRunLoopCommonModes];
+    }
+    
 }
 
 -(void)next{
