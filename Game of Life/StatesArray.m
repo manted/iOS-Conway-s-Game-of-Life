@@ -235,8 +235,8 @@
 -(void)randomStates{
     for (NSMutableArray *rowArray in _rowArray) {
         for (CellState *aCellState in rowArray) {
-            int r = arc4random() % 3;
-            if (r == 0) {
+            int r = arc4random() % 5;
+            if (r < 2) {
                 [aCellState setCurrentState:ALIVE];
             }else{
                 [aCellState setCurrentState:DEAD];
