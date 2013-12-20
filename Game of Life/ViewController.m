@@ -28,6 +28,11 @@
     [self addClearButton];
     [self addSegmentedControl];
     
+    _time = 0;
+    _population = 0;
+    
+    [self addLabels];
+    
     [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:UIStatusBarAnimationSlide];
 }
 
@@ -41,7 +46,7 @@
 
 -(void)addRandomButton{
     UIButton *randomButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    randomButton.frame = CGRectMake(50, AREA_HEIGHT + 44, 100, 30);
+    randomButton.frame = CGRectMake(10, AREA_HEIGHT + 44, 68, 30);
     [randomButton setTitle:@"Random" forState:UIControlStateNormal];
     [randomButton addTarget:self action:@selector(handleRandomButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:randomButton];
@@ -49,7 +54,7 @@
 
 -(void)addClearButton{
     UIButton *clearButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    clearButton.frame = CGRectMake(170, AREA_HEIGHT + 44, 100, 30);
+    clearButton.frame = CGRectMake(84, AREA_HEIGHT + 44, 56, 30);
     [clearButton setTitle:@"Clear" forState:UIControlStateNormal];
     [clearButton addTarget:self action:@selector(handleClearButton:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:clearButton];
@@ -62,6 +67,21 @@
     segmentedControl.selectedSegmentIndex = 0;
     [segmentedControl addTarget:self action:@selector(handleSegmentedControl:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:segmentedControl];
+}
+
+-(void)addLabels{
+    _timeLb = [[UILabel alloc]initWithFrame:CGRectMake(150, AREA_HEIGHT + 44, 60, 30)];
+    _popLb = [[UILabel alloc]initWithFrame:CGRectMake(214, AREA_HEIGHT + 44, 100, 30)];
+    [_timeLb setFont:[UIFont systemFontOfSize:14]];
+    [_popLb setFont:[UIFont systemFontOfSize:14]];
+    [self.view addSubview:_timeLb];
+    [self.view addSubview:_popLb];
+    [self setLabelText];
+}
+
+-(void)setLabelText{
+    [_timeLb setText:[NSString stringWithFormat:@"Time:%i",_time]];
+    [_popLb setText:[NSString stringWithFormat:@"Population:%i",_population]];
 }
 
 -(void)addCells{
@@ -95,11 +115,17 @@
 -(IBAction)handleRandomButton:(id)sender{
     [_statesArray randomStates];
     [self updateCellViews];
+    _time = 0;
+    [self countPopulation];
+    [self setLabelText];
 }
 
 -(IBAction)handleClearButton:(id)sender{
+    _time = 0;
+    _population = 0;
     [_statesArray clear];
     [self updateCellViews];
+    [self setLabelText];
 }
 
 -(IBAction)handleSegmentedControl:(id)sender{
@@ -142,8 +168,14 @@
 -(void)next{
     [_statesArray goToNextGeneration];
     [self updateCellViews];
+    _time++;
+    [self countPopulation];
+    [self setLabelText];
 }
 
+-(void)countPopulation{
+    _population = [_statesArray countPopulation];
+}
 
 -(void)setState:(int)state row:(int)row col:(int)col{
     [_statesArray setState:state row:row col:col];

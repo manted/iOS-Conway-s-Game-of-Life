@@ -22,4 +22,5 @@
 -(void)goToNextGeneration;
 -(void)randomStates;
 -(void)clear;
+-(int)countPopulation;
 @end

@@ -14,6 +14,10 @@
 
 @property (nonatomic, strong) StatesArray *statesArray;
 @property (nonatomic, strong) NSTimer *timer;
+@property (nonatomic) int time;
+@property (nonatomic) int population;
+@property (nonatomic, strong) IBOutlet UILabel *timeLb;
+@property (nonatomic, strong) IBOutlet UILabel *popLb;
 
 -(void)setState:(int)state row:(int)row col:(int)col;
 -(void)changeStateOfRow:(int)row col:(int)col;

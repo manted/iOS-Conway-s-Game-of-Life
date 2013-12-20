@@ -254,4 +254,16 @@
     }
 }
 
+-(int)countPopulation{
+    int count = 0;
+    for (NSMutableArray *rowArray in _rowArray) {
+        for (CellState *aCellState in rowArray) {
+            if (aCellState.currentState == ALIVE) {
+                count++;
+            }
+        }
+    }
+    return count;
+}
+
 @end
