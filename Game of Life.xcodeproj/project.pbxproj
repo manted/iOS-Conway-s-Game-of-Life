@@ -257,6 +257,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Ye Hua";
 				TargetAttributes = {
+					F790373F18608DC60066C40B = {
+						DevelopmentTeam = R6A4T276PC;
+					};
 					F790376018608DC60066C40B = {
 						TestTargetID = F790373F18608DC60066C40B;
 					};
@@ -450,11 +453,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ye Hua (H87TYET4CR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Ye Hua (R6A4T276PC)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Game of Life/Game of Life-Prefix.pch";
 				INFOPLIST_FILE = "Game of Life/Game of Life-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7371BE37-4CB0-4DD9-8A5A-8CF7DBC03CE8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -464,11 +470,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Ye Hua (H87TYET4CR)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Ye Hua (H87TYET4CR)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Game of Life/Game of Life-Prefix.pch";
 				INFOPLIST_FILE = "Game of Life/Game of Life-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7371BE37-4CB0-4DD9-8A5A-8CF7DBC03CE8";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
