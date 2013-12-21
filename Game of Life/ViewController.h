@@ -23,4 +23,6 @@
 -(void)changeStateOfRow:(int)row col:(int)col;
 -(void)updateCellViews;
 - (IBAction)handleNextButton:(id)sender;
+-(void)countPopulation;
+-(void)setLabelText;
 @end

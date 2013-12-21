@@ -37,6 +37,8 @@
 //    NSLog(@"tap row:%i col:%i",_row,_col);
     [_controller changeStateOfRow:_row col:_col];
     [_controller updateCellViews];
+    [_controller countPopulation];
+    [_controller setLabelText];
 }
 /*
 // Only override drawRect: if you perform custom drawing.

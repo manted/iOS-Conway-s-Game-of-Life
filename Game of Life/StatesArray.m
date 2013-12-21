@@ -77,159 +77,87 @@
     if (row == 0) {
         //left
         if (col == 0) {
-            if ([self getCurrentStateOfRow:0 col:1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:1 col:0] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:1 col:1] == ALIVE) {
-                count++;
-            }
+            count += [self isAliveOfRow:0 col:1];
+            count += [self isAliveOfRow:1 col:0];
+            count += [self isAliveOfRow:1 col:1];
         }
         //right
         else if (col == NUM_OF_COL - 1){
-            if ([self getCurrentStateOfRow:0 col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:1 col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:1 col:col] == ALIVE) {
-                count++;
-            }
+            count += [self isAliveOfRow:0 col:col - 1];
+            count += [self isAliveOfRow:1 col:col - 1];
+            count += [self isAliveOfRow:1 col:col];
         }
         //centre
         else{
-            if ([self getCurrentStateOfRow:row col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row col:col + 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row + 1 col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row + 1 col:col] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row + 1 col:col + 1] == ALIVE) {
-                count++;
-            }
+            count += [self isAliveOfRow:row col:col - 1];
+            count += [self isAliveOfRow:row col:col + 1];
+            count += [self isAliveOfRow:row + 1 col:col - 1];
+            count += [self isAliveOfRow:row + 1 col:col];
+            count += [self isAliveOfRow:row + 1 col:col + 1];
         }
     }
     //bottom
     else if (row == NUM_OF_ROW - 1){
         //left
         if (col == 0) {
-            if ([self getCurrentStateOfRow:row - 1 col:0] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row - 1 col:1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row col:1] == ALIVE) {
-                count++;
-            }
+            count += [self isAliveOfRow:row - 1 col:0];
+            count += [self isAliveOfRow:row - 1 col:1];
+            count += [self isAliveOfRow:row col:1];
         }
         //right
         else if (col == NUM_OF_COL - 1){
-            if ([self getCurrentStateOfRow:row - 1 col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row - 1 col:col] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row col:col - 1] == ALIVE) {
-                count++;
-            }
+            count += [self isAliveOfRow:row - 1 col:col - 1];
+            count += [self isAliveOfRow:row - 1 col:col];
+            count += [self isAliveOfRow:row col:col - 1];
         }
         //centre
         else{
-            if ([self getCurrentStateOfRow:row col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row col:col + 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row - 1 col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row - 1 col:col] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row - 1 col:col + 1] == ALIVE) {
-                count++;
-            }
+            count += [self isAliveOfRow:row col:col - 1];
+            count += [self isAliveOfRow:row col:col + 1];
+            count += [self isAliveOfRow:row - 1 col:col - 1];
+            count += [self isAliveOfRow:row - 1 col:col];
+            count += [self isAliveOfRow:row - 1 col:col + 1];
         }
     }
     //centre
     else{
         //left
         if (col == 0) {
-            if ([self getCurrentStateOfRow:row - 1 col:0] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row - 1 col:1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row col:1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row + 1 col:1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row + 1 col:0] == ALIVE) {
-                count++;
-            }
+            count += [self isAliveOfRow:row - 1 col:0];
+            count += [self isAliveOfRow:row - 1 col:1];
+            count += [self isAliveOfRow:row col:1];
+            count += [self isAliveOfRow:row + 1 col:1];
+            count += [self isAliveOfRow:row + 1 col:0];
         }
         //right
         else if (col == NUM_OF_COL - 1){
-            if ([self getCurrentStateOfRow:row - 1 col:col] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row - 1 col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row + 1 col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row + 1 col:col] == ALIVE) {
-                count++;
-            }
+            count += [self isAliveOfRow:row - 1 col:col];
+            count += [self isAliveOfRow:row - 1 col:col - 1];
+            count += [self isAliveOfRow:row col:col - 1];
+            count += [self isAliveOfRow:row + 1 col:col - 1];
+            count += [self isAliveOfRow:row + 1 col:col];
         }
         //centre
         else{
-            if ([self getCurrentStateOfRow:row - 1 col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row - 1 col:col] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row - 1 col:col + 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row col:col + 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row + 1 col:col - 1] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row + 1 col:col] == ALIVE) {
-                count++;
-            }
-            if ([self getCurrentStateOfRow:row + 1 col:col + 1] == ALIVE) {
-                count++;
-            }
+            count += [self isAliveOfRow:row - 1 col:col - 1];
+            count += [self isAliveOfRow:row - 1 col:col];
+            count += [self isAliveOfRow:row - 1 col:col + 1];
+            count += [self isAliveOfRow:row col:col - 1];
+            count += [self isAliveOfRow:row col:col + 1];
+            count += [self isAliveOfRow:row + 1 col:col - 1];
+            count += [self isAliveOfRow:row + 1 col:col];
+            count += [self isAliveOfRow:row + 1 col:col + 1];
         }
     }
     return count;
+}
+
+-(int)isAliveOfRow:(int)row col:(int)col{
+    if ([self getCurrentStateOfRow:row col:col] ==  ALIVE) {
+        return 1;
+    }else{
+        return 0;
+    }
 }
 
 -(void)randomStates{
@@ -241,7 +169,6 @@
             }else{
                 [aCellState setCurrentState:DEAD];
             }
-            
         }
     }
 }
